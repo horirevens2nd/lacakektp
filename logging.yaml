@@ -1,0 +1,28 @@
+version: 1
+formatters:
+  default_formatter:
+    format: "%(asctime)s | %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+filters:
+  info_filter:
+    (): loggingfilter.InfoFilter
+handlers:
+  console_handler:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: default_formatter
+    stream: ext://sys.stdout
+  info_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: default_formatter
+    filename: logs/info.log
+    filters: [info_filter]
+  error_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: default_formatter
+    filename: logs/error.log
+root:
+  handlers: [console_handler, info_handler, error_handler]
+  propagate: yes

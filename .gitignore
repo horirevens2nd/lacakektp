@@ -1,0 +1,13 @@
+# https://www.pluralsight.com/guides/how-to-use-gitignore-file
+
+# directories
+.git/
+.vscode/
+.idea/
+__pycache__/
+logs/
+dist/
+
+# files
+*.txt
+chromedriver
